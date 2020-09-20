@@ -14,6 +14,7 @@ int main()
     cout<<"Hardware Concurrency : "<<numThreads<<"\n";
 	int num = 3; 
 
+	// Creating 'numThreads' number of threads
     for (int i = 0; i < numThreads; i++) {
         workers.push_back(thread([i](int sum) 
         {
@@ -23,6 +24,7 @@ int main()
         },num));
     }
 
+    //Calling join() for each thread before main() exits
     for_each(workers.begin(), workers.end(), [](thread &t) 
     {
         t.join();
